@@ -18,7 +18,7 @@ fi
 echo
 echo "Checking GitHub Agentic Workflows CLI..."
 gh aw --version
-gh aw doctor --repo "$repo"
+(cd .. && gh aw doctor --repo "$repo")
 
 echo
 echo "Checking Copilot inference secret..."
