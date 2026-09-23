@@ -37,20 +37,23 @@
 12. Run `gh aw secrets bootstrap --non-interactive --engine copilot` and confirm
    the participant authentication path is ready.
 
-## 90-minute run of show
+## 120-minute run of show
 
 | Time | Activity |
 |---|---|
 | 0–5 | Welcome, outcomes, readiness check |
-| 5–17 | Agentic workflow foundations |
-| 17–27 | Issue-triage contract and quality bar |
-| 27–32 | Starter repository walkthrough |
-| 32–57 | Customize and compile |
-| 57–62 | Troubleshooting buffer and checkpoint |
-| 62–74 | Run one assigned scenario |
-| 74–82 | Evaluate and propose one evidence-based refinement |
-| 82–87 | Share observations and discuss human gates |
-| 87–90 | Resources and close |
+| 5–17 | Agentic Workflow foundations |
+| 17–29 | AI-enabled SDLC framing, examples, and task selection |
+| 29–39 | Issue-triage contract and quality bar |
+| 39–62 | Customize the three workflow decisions |
+| 62–70 | Compile, review, commit, and push |
+| 70–78 | Inspect the generated lock file and troubleshoot |
+| 78–82 | Assign a scenario and predict the expected result |
+| 82–96 | Run one assigned scenario |
+| 96–106 | Evaluate and propose one evidence-based refinement |
+| 106–114 | Design another SDLC workflow |
+| 114–118 | Human approval and adoption roadmap |
+| 118–120 | Resources and close |
 
 ## Distributed test assignments
 
@@ -62,6 +65,18 @@
   - The strongest evidence used
   - The least certain decision
   - One change they would make
+
+Before starting the workflow, require each group to predict:
+
+- Expected labels
+- Whether priority should be set
+- Missing-information questions
+- Duplicate versus related status
+- Evidence the agent should cite
+
+During the transfer exercise, use `docs/workflow-design-canvas.md`. Ask groups
+to share the task, safe output, human gate, and evaluation cases—not a full
+prompt.
 
 ## Fallbacks
 

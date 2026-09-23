@@ -13,6 +13,8 @@ By the end of the exercise, you will:
 3. Define a predictable triage report.
 4. Compile and run the workflow.
 5. Evaluate one assigned test case and make one evidence-based improvement.
+6. Design another SDLC workflow with bounded outputs and an appropriate human
+   gate.
 
 ## Start in GitHub Codespaces
 
@@ -56,6 +58,7 @@ Codespace and have that operator create the assigned issue.
 | `test-cases/` | Prepared issue bodies for distributed testing |
 | `fallback-outputs/` | Sample results for continuing when Actions or inference is delayed |
 | `docs/evaluation-rubric.md` | Rubric for reviewing workflow output |
+| `docs/workflow-design-canvas.md` | Worksheet for designing another SDLC workflow |
 | `scripts/create-labels.sh` | Creates the labels allowed by the workflow |
 | `scripts/create-test-issues.sh` | Creates only the assigned test scenario |
 | `scripts/workshop-readiness.sh` | Verifies auth, secret, labels, fixture, and compilation |
@@ -132,7 +135,24 @@ such as:
 
 Write down the exact change and the behavior you expect it to improve. A second
 compile and run is an optional extension after the workshop; it is not required
-inside the 90-minute session.
+inside the session.
+
+## Exercise 4: transfer the method
+
+Use [docs/workflow-design-canvas.md](docs/workflow-design-canvas.md) to design
+one narrow Agentic Workflow for another part of your SDLC.
+
+Define:
+
+- The task and trigger
+- The repository context the agent must read
+- The judgment the agent makes
+- A bounded or reviewable output
+- The human approval boundary
+- Complete, incomplete, ambiguous, and adversarial evaluation cases
+
+Do not implement the new workflow during the session. The goal is to leave with
+a testable design rather than a broad autonomous system.
 
 ## Important operating constraints
 
