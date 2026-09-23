@@ -2,7 +2,8 @@
   "name": "Agentic Workflows Workshop",
   "image": "mcr.microsoft.com/devcontainers/universal:latest",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/copilot-cli:latest": {}
   },
   "customizations": {
     "vscode": {

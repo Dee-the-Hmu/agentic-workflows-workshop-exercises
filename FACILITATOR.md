@@ -9,23 +9,30 @@
 - Require attendees to complete the pre-work verification.
 - Keep one facilitator-owned fallback repository available for demonstration.
 - Encourage pairs or tables to use one working environment when setup fails.
+- Treat Copilot Free and other Auto-only plans as evaluation-only participants;
+  pair them with a compatible Copilot Pro+ or organization-seat environment.
 
 ## Before publishing
 
 1. Follow `PUBLISHING.md` with a separate personal GitHub.com account.
 2. Create a repository from the template and launch a new Codespace.
 3. Run `./scripts/workshop-readiness.sh`.
-4. Confirm the workflow uses Copilot `model: auto`.
-5. Run all scenarios and inspect AI Credits with `gh aw logs` and `gh aw audit`.
-6. Adjust `max-ai-credits` only if a successful rehearsal approaches the cap.
-7. Reset `.github/workflows/issue-triage.md` to the TODO version.
-8. Recompile so the committed lock file matches the starter.
-9. Test each script mode in a disposable repository:
+4. Confirm the workflow uses `model: auto`.
+5. Confirm the fixture issue is skipped and scenario A proceeds past
+   pre-activation. The root-level `if:` checks the triggering issue's labels;
+   `skip-if-match` must not be used because it searches the repository.
+6. Confirm `on.roles: all` and the owner-only condition are present. In a public
+   rehearsal copy, verify that a non-owner issue does not start inference.
+7. Run all scenarios and inspect AI Credits with `gh aw logs` and `gh aw audit`.
+8. Adjust `max-ai-credits` only if a successful rehearsal approaches the cap.
+9. Reset `.github/workflows/issue-triage.md` to the TODO version.
+10. Recompile so the committed lock file matches the starter.
+11. Test each script mode in a disposable repository:
    - `./scripts/create-test-issues.sh --seed-duplicate-source`
    - `./scripts/create-test-issues.sh A`
    - `./scripts/create-test-issues.sh B`
    - `./scripts/create-test-issues.sh C`
-10. Run `gh aw secrets bootstrap --non-interactive --engine copilot` and confirm
+12. Run `gh aw secrets bootstrap --non-interactive --engine copilot` and confirm
    the participant authentication path is ready.
 
 ## 90-minute run of show
@@ -62,6 +69,13 @@ If authentication or installation fails:
 - Use the facilitator repository and ask the attendee to evaluate an output.
 - If most of the room is blocked, demonstrate one live run from the facilitator
   repository and continue with the fallback outputs.
+
+If an attendee has Copilot Free:
+
+- Do not spend workshop time trying alternate model names.
+- Explain that direct Copilot CLI may work while the current PAT-backed gh-aw
+  proxy path returns `400 The requested model is not supported`.
+- Pair the attendee or continue with the matching fallback output.
 
 If Actions or inference is slow:
 

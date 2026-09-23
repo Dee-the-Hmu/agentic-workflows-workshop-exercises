@@ -8,17 +8,24 @@ gh auth status
 
 repo="$(gh repo view --json nameWithOwner --jq .nameWithOwner)"
 owner_type="$(gh api "repos/$repo" --jq .owner.type)"
+visibility="$(gh repo view --json visibility --jq .visibility)"
 
 echo
-echo "Repository: $repo"
+echo "Repository: $repo ($visibility)"
 if [[ "$owner_type" != "User" ]]; then
-  echo "Warning: the workshop is designed for a personal-account repository." >&2
+  cat >&2 <<EOF
+The workshop repository must be owned by your personal GitHub.com account.
+
+The owner-only trigger condition will not run in an organization-owned
+repository because github.repository_owner would be the organization name.
+EOF
+  exit 1
 fi
 
 echo
 echo "Checking GitHub Agentic Workflows CLI..."
 gh aw --version
-(cd .. && gh aw doctor --repo "$repo")
+gh aw doctor --repo "$repo" --dir .
 
 echo
 echo "Checking Copilot inference secret..."

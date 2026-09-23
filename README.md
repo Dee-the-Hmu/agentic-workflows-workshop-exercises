@@ -17,7 +17,8 @@ By the end of the exercise, you will:
 ## Start in GitHub Codespaces
 
 1. Select **Use this template → Create a new repository**.
-2. Create the repository under your personal GitHub.com account.
+2. Create a public or private repository under your personal GitHub.com
+   account.
 3. In your new repository, select **Code → Codespaces → Create codespace on
    main**.
 4. Complete [PREWORK.md](PREWORK.md).
@@ -32,6 +33,17 @@ Do not complete the TODOs in the starter workflow before the workshop.
 If you cannot use a personal GitHub.com account, Codespaces, or Copilot
 inference, pair with someone who has a working environment. The facilitator can
 also demonstrate the live run while you evaluate the supplied fallback output.
+
+Copilot Free and other plans restricted to Auto-only model access are not
+currently compatible with the released PAT-backed gh-aw workflow path. Use
+Copilot Pro, Pro+, Max, or an eligible Business/Enterprise seat for the live
+run. Attendees with Copilot Free should pair or use the fallback output.
+
+The template uses `on.roles: all` to avoid inconsistent membership detection,
+then restricts execution to `github.actor == github.repository_owner`. In a
+public repository, issues opened by anyone other than the repository owner
+produce no inference run. Each pair should use the repository owner's Codespace
+and have the owner create the assigned issue.
 
 ## Repository map
 
@@ -131,6 +143,8 @@ inside the 90-minute session.
 - Prefer an unset classification over an unsupported guess.
 - The Copilot engine uses `model: auto` with explicit per-run, per-day, turn,
   and timeout limits.
+- Copilot Free may work in Copilot CLI directly but still fail in the
+  PAT-backed Agentic Workflows proxy path.
 
 ## References
 

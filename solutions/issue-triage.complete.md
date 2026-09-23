@@ -7,7 +7,9 @@ on:
   issues:
     types: [opened, reopened]
   reaction: eyes
-  skip-if-match: 'label:workshop-fixture'
+  roles: all
+
+if: github.actor == github.repository_owner && contains(github.event.issue.labels.*.name, 'workshop-fixture') == false
 
 permissions:
   contents: read
