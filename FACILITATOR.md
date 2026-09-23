@@ -21,8 +21,10 @@
 5. Confirm the fixture issue is skipped and scenario A proceeds past
    pre-activation. The root-level `if:` checks the triggering issue's labels;
    `skip-if-match` must not be used because it searches the repository.
-6. Confirm `on.roles: all` and the owner-only condition are present. In a public
-   rehearsal copy, verify that a non-owner issue does not start inference.
+6. Confirm `on.roles: all`, the `WORKSHOP_OPERATOR` variable, and the operator
+   condition are present. Test personal and organization-owned copies. In a
+   public rehearsal copy, verify that an unconfigured user cannot start
+   inference.
 7. Run all scenarios and inspect AI Credits with `gh aw logs` and `gh aw audit`.
 8. Adjust `max-ai-credits` only if a successful rehearsal approaches the cap.
 9. Reset `.github/workflows/issue-triage.md` to the TODO version.

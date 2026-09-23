@@ -17,8 +17,8 @@ By the end of the exercise, you will:
 ## Start in GitHub Codespaces
 
 1. Select **Use this template → Create a new repository**.
-2. Create a public or private repository under your personal GitHub.com
-   account.
+2. Create a public or private repository under your personal GitHub.com account
+   or an organization where you can administer Actions secrets and variables.
 3. In your new repository, select **Code → Codespaces → Create codespace on
    main**.
 4. Complete [PREWORK.md](PREWORK.md).
@@ -30,7 +30,7 @@ By the end of the exercise, you will:
 
 Do not complete the TODOs in the starter workflow before the workshop.
 
-If you cannot use a personal GitHub.com account, Codespaces, or Copilot
+If you cannot administer the repository, use Codespaces, or access Copilot
 inference, pair with someone who has a working environment. The facilitator can
 also demonstrate the live run while you evaluate the supplied fallback output.
 
@@ -40,10 +40,11 @@ Copilot Pro, Pro+, Max, or an eligible Business/Enterprise seat for the live
 run. Attendees with Copilot Free should pair or use the fallback output.
 
 The template uses `on.roles: all` to avoid inconsistent membership detection,
-then restricts execution to `github.actor == github.repository_owner`. In a
-public repository, issues opened by anyone other than the repository owner
-produce no inference run. Each pair should use the repository owner's Codespace
-and have the owner create the assigned issue.
+then restricts execution to either the personal repository owner or the
+repository variable `WORKSHOP_OPERATOR`. The readiness script sets that variable
+to the signed-in user. In a public repository, issues opened by anyone else
+produce no inference run. Each pair should use the configured operator's
+Codespace and have that operator create the assigned issue.
 
 ## Repository map
 

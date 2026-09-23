@@ -1,20 +1,23 @@
 # Pre-work checklist
 
-Complete this checklist before the workshop. The primary path uses a personal
-GitHub.com account and a Codespace created from your copy of the template.
+Complete this checklist before the workshop. The primary path uses a repository
+in your personal namespace or an organization you administer, with a Codespace
+created from your copy of the template.
 
 ## Account requirements
 
 - [ ] I am signed in with a personal GitHub.com account.
-- [ ] I can create a repository in my personal namespace.
+- [ ] I can create a repository in my personal namespace or an organization
+  where I can manage Actions secrets and variables.
 - [ ] My account can create a GitHub Codespace.
 - [ ] My account has Copilot Pro, Pro+, Max, or an eligible
   Business/Enterprise seat with available AI Credits.
 - [ ] I can create a fine-grained personal access token.
 
-Enterprise Managed User accounts cannot copy this public template or create a
-personal Codespace for it. If you only have a managed account, arrange to pair
-with another attendee.
+Organization policies may restrict template access, Actions, Codespaces,
+personal access tokens, or Copilot. Confirm those capabilities before selecting
+an organization-owned repository. If they are unavailable, use a personal
+repository or pair with another attendee.
 
 Copilot Free and other Auto-only plans are not currently compatible with the
 released PAT-backed gh-aw workflow path. A direct Copilot CLI prompt may work
@@ -25,7 +28,8 @@ participant who has compatible access.
 ## Create the workshop repository
 
 1. Select **Use this template → Create a new repository**.
-2. Create a public or private repository under your personal account.
+2. Create a public or private repository under your personal account or an
+   organization where you have administrative access.
 3. Open **Code → Codespaces → Create codespace on main**.
 4. Wait for the terminal to report that the Codespace tools are installed.
 
@@ -70,6 +74,7 @@ organization seat.
 - [ ] GitHub CLI authentication succeeds.
 - [ ] gh-aw version 0.88.8 is installed.
 - [ ] The Copilot repository secret is detected.
+- [ ] `WORKSHOP_OPERATOR` is set to my signed-in GitHub username.
 - [ ] Workshop labels are created.
 - [ ] The duplicate fixture is created without starting the AI agent.
 - [ ] The starter workflow compiles.
@@ -78,9 +83,10 @@ Do not complete the TODOs before the workshop. Do not use a production
 repository.
 
 The workflow permits all issue authors through the framework's role check but
-adds an owner-only expression. Only an event performed by the personal
-repository owner can start inference, so a public repository does not expose
-the owner's Copilot credits to arbitrary issue authors.
+restricts inference to the personal repository owner or the configured
+`WORKSHOP_OPERATOR`. The readiness script sets the operator to the signed-in
+user, allowing both personal and organization-owned repositories without
+exposing Copilot credits to arbitrary issue authors.
 
 The workshop standardizes on the default GitHub Copilot engine with a
 fine-grained personal access token stored as the `COPILOT_GITHUB_TOKEN`

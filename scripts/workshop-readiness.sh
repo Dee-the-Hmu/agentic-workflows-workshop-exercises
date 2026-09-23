@@ -9,16 +9,18 @@ gh auth status
 repo="$(gh repo view --json nameWithOwner --jq .nameWithOwner)"
 owner_type="$(gh api "repos/$repo" --jq .owner.type)"
 visibility="$(gh repo view --json visibility --jq .visibility)"
+operator="$(gh api user --jq .login)"
 
 echo
 echo "Repository: $repo ($visibility)"
-if [[ "$owner_type" != "User" ]]; then
-  cat >&2 <<EOF
-The workshop repository must be owned by your personal GitHub.com account.
+echo "Repository owner type: $owner_type"
 
-The owner-only trigger condition will not run in an organization-owned
-repository because github.repository_owner would be the organization name.
-EOF
+echo
+echo "Configuring workshop operator: $operator"
+gh variable set WORKSHOP_OPERATOR --repo "$repo" --body "$operator"
+configured_operator="$(gh variable get WORKSHOP_OPERATOR --repo "$repo")"
+if [[ "$configured_operator" != "$operator" ]]; then
+  echo "Failed to verify WORKSHOP_OPERATOR repository variable." >&2
   exit 1
 fi
 

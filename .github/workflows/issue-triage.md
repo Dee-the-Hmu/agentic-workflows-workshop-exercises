@@ -9,7 +9,15 @@ on:
   reaction: eyes
   roles: all
 
-if: github.actor == github.repository_owner && contains(github.event.issue.labels.*.name, 'workshop-fixture') == false
+if: >-
+  (
+    github.actor == github.repository_owner ||
+    github.actor == vars.WORKSHOP_OPERATOR
+  ) &&
+  contains(
+    github.event.issue.labels.*.name,
+    'workshop-fixture'
+  ) == false
 
 permissions:
   contents: read

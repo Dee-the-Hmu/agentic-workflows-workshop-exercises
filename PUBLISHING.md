@@ -13,9 +13,10 @@ Use these steps after uploading this folder to your GitHub.com namespace.
    proceeds past pre-activation. The workflow's root-level `if:` must inspect
    only the triggering issue; do not replace it with a repository-wide
    `skip-if-match` query.
-8. Confirm `on.roles: all` and the owner-only root condition are present. Open
-   one issue as the repository owner and, in a public test copy, open another
-   from a different account. Only the owner-created event may start inference.
+8. Confirm `on.roles: all` and the operator-aware root condition are present.
+   Open one issue as the configured `WORKSHOP_OPERATOR` and, in a public test
+   copy, open another from a different account. Only the configured operator or
+   a personal repository owner may start inference.
 9. Confirm the generated workflow reports `COPILOT_MODEL: auto`.
 10. Test the same PAT directly with the secure diagnostic in `PREWORK.md`.
 11. Run all three scenarios and record their AI Credits:
@@ -44,7 +45,8 @@ available when no compatible account exists at a table.
 ## Suggested attendee instructions
 
 1. Select **Use this template → Create a new repository**.
-2. Create a public or private repository under a personal GitHub.com account.
+2. Create a public or private repository under a personal GitHub.com account or
+   an organization where you have administrative access.
 3. Open **Code → Codespaces → Create codespace on main**.
 4. Complete `PREWORK.md`.
 5. Run `./scripts/workshop-readiness.sh`.
