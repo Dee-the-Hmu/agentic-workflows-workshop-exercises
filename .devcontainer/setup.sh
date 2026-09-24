@@ -16,6 +16,7 @@ cat <<'EOF'
 unset GH_TOKEN GITHUB_TOKEN
 gh auth login --hostname github.com --git-protocol https \
   --web --scopes repo,workflow,read:org
+gh auth setup-git --hostname github.com
 EOF
 echo
 echo "Complete PREWORK.md, then run ./scripts/workshop-readiness.sh."

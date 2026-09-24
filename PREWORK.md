@@ -46,13 +46,16 @@ Run:
 unset GH_TOKEN GITHUB_TOKEN
 gh auth login --hostname github.com --git-protocol https \
   --web --scopes repo,workflow,read:org
+gh auth setup-git --hostname github.com
 gh auth status --active --hostname github.com
 ```
 
 Confirm the intended GitHub account is active and that the status does not
 report authentication from an environment token. The workshop scripts ignore
 Codespaces' `GITHUB_TOKEN` so stored GitHub CLI user authentication can be used.
-An intentionally supplied `GH_TOKEN` remains supported.
+An intentionally supplied `GH_TOKEN` remains supported. The scripts also run
+`gh auth setup-git --hostname github.com` to configure GitHub CLI as Git's
+HTTPS credential helper and prevent `git push` from prompting for a username.
 
 `COPILOT_GITHUB_TOKEN` is separate: it remains a repository Actions secret used
 by the Agentic Workflow for Copilot inference, not GitHub CLI authentication in
@@ -98,6 +101,7 @@ organization seat.
 
 - [ ] The intended GitHub account is active in GitHub CLI without
   environment-token authentication.
+- [ ] GitHub CLI is configured as Git's HTTPS credential helper.
 - [ ] gh-aw version 0.88.8 is installed.
 - [ ] The Copilot repository secret is detected.
 - [ ] `WORKSHOP_OPERATOR` is set to my signed-in GitHub username.

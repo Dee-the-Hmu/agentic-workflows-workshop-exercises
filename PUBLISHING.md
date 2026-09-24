@@ -14,6 +14,7 @@ Use these steps after uploading this folder to your GitHub.com namespace.
    unset GH_TOKEN GITHUB_TOKEN
    gh auth login --hostname github.com --git-protocol https \
      --web --scopes repo,workflow,read:org
+   gh auth setup-git --hostname github.com
    gh auth status --active --hostname github.com
    ```
 
@@ -57,7 +58,8 @@ available when no compatible account exists at a table.
 2. Create a public or private repository under a personal GitHub.com account or
    an organization where you have administrative access.
 3. Open **Code → Codespaces → Create codespace on main**.
-4. Run the GitHub CLI user-login commands in `PREWORK.md`.
+4. Run the GitHub CLI user-login and `gh auth setup-git` commands in
+   `PREWORK.md`.
 5. Complete `PREWORK.md`.
 6. Run `./scripts/workshop-readiness.sh`.
 

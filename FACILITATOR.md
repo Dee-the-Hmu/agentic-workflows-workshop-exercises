@@ -22,6 +22,7 @@
    unset GH_TOKEN GITHUB_TOKEN
    gh auth login --hostname github.com --git-protocol https \
      --web --scopes repo,workflow,read:org
+   gh auth setup-git --hostname github.com
    gh auth status --active --hostname github.com
    ```
 
@@ -103,6 +104,8 @@ If authentication or installation fails:
 - Confirm the intended account is active with
   `gh auth status --active --hostname github.com`; if Codespaces environment
   authentication is taking precedence, rerun the login commands above.
+- If an HTTPS `git push` prompts for a username, run
+  `gh auth setup-git --hostname github.com` and retry.
 - Pair the attendee with a working environment.
 - Use the facilitator repository and ask the attendee to evaluate an output.
 - If most of the room is blocked, demonstrate one live run from the facilitator

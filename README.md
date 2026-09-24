@@ -32,7 +32,11 @@ By the end of the exercise, you will:
    unset GH_TOKEN GITHUB_TOKEN
    gh auth login --hostname github.com --git-protocol https \
      --web --scopes repo,workflow,read:org
+   gh auth setup-git --hostname github.com
    ```
+
+   The final command configures GitHub CLI as Git's HTTPS credential helper so
+   `git push` does not fall back to an interactive username prompt.
 
 5. Complete [PREWORK.md](PREWORK.md).
 6. Run:

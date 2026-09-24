@@ -14,6 +14,17 @@ authentication.
 unset GH_TOKEN GITHUB_TOKEN
 gh auth login --hostname github.com --git-protocol https \
   --web --scopes repo,workflow,read:org
+gh auth setup-git --hostname github.com
+EOF
+  exit 1
+fi
+
+if ! gh auth setup-git --hostname github.com; then
+  cat >&2 <<'EOF'
+GitHub CLI is authenticated, but Git could not be configured for HTTPS.
+
+unset GH_TOKEN GITHUB_TOKEN
+gh auth setup-git --hostname github.com
 EOF
   exit 1
 fi
