@@ -191,3 +191,17 @@ a testable design rather than a broad autonomous system.
 - <https://github.github.com/gh-aw/gallery/ai-issue-triage/>
 - <https://gh.io/gh-aw-quickstart>
 - <https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/agents/about-github-agentic-workflows>
+
+## License and trademarks
+
+The workshop starter code and documentation are available under the
+[MIT License](LICENSE).
+
+Copyright © 2026 GitHub, Inc.
+
+GitHub and the Invertocat logo are trademarks of GitHub, Inc. The MIT License
+does not grant permission to use GitHub trademarks, logos, or other brand
+assets. See the [GitHub Brand Toolkit](https://brand.github.com/) for permitted
+uses.
+
+GitHub Agentic Workflows is in public preview and subject to change.
