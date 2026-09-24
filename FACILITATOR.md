@@ -62,6 +62,7 @@
 - Assign one third scenario C.
 - Have each group report:
   - The labels or type applied
+  - The suggested team and simulated tag
   - The strongest evidence used
   - The least certain decision
   - One change they would make
@@ -69,6 +70,7 @@
 Before starting the workflow, require each group to predict:
 
 - Expected labels
+- Expected suggested team
 - Whether priority should be set
 - Missing-information questions
 - Duplicate versus related status
@@ -77,6 +79,13 @@ Before starting the workflow, require each group to predict:
 During the transfer exercise, use `docs/workflow-design-canvas.md`. Ask groups
 to share the task, safe output, human gate, and evaluation cases—not a full
 prompt.
+
+After evaluation, ask the repository operator to act as the human approver:
+
+- Add `routing/approved` only when the suggested team is supported by evidence.
+- Leave the label unset when the route should be redirected.
+- Point out that `routing/approved` exists in the repository but is absent from
+  the agent's safe-output allowlist.
 
 ## Fallbacks
 

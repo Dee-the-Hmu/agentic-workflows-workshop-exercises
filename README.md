@@ -2,7 +2,9 @@
 
 This repository is the hands-on starter for the **Build an AI-powered issue triage workflow** workshop.
 
-You will customize a GitHub Agentic Workflow that evaluates new issues, applies controlled metadata, identifies likely duplicates, and posts a concise maintainer-facing report.
+You will customize a GitHub Agentic Workflow that evaluates new issues, applies
+controlled metadata, identifies likely duplicates, recommends a simulated team
+route, and posts a concise maintainer-facing report for human approval.
 
 ## Workshop objectives
 
@@ -13,7 +15,8 @@ By the end of the exercise, you will:
 3. Define a predictable triage report.
 4. Compile and run the workflow.
 5. Evaluate one assigned test case and make one evidence-based improvement.
-6. Design another SDLC workflow with bounded outputs and an appropriate human
+6. Review and approve or redirect a simulated team route.
+7. Design another SDLC workflow with bounded outputs and an appropriate human
    gate.
 
 ## Start in GitHub Codespaces
@@ -69,8 +72,8 @@ Codespace and have that operator create the assigned issue.
 Open `.github/workflows/issue-triage.md` and complete the three TODOs:
 
 1. Finish the safe-output label allowlist.
-2. Add the missing completeness and priority rules.
-3. Complete the maintainer-facing report contract.
+2. Add the missing completeness, priority, and team-routing rules.
+3. Complete the maintainer-facing report and approval contract.
 
 Then compile and inspect the changes:
 
@@ -124,6 +127,18 @@ gh aw audit RUN-ID
 
 Use [docs/evaluation-rubric.md](docs/evaluation-rubric.md) to score the result.
 
+Review the suggested team and simulated inline-code tag. If the evidence
+supports the route, apply the human-only approval label:
+
+```shell
+gh issue edit ISSUE-NUMBER --add-label routing/approved
+```
+
+If the route is unsupported, do not approve it. Record the corrected route in
+your refinement notes instead. The Agentic Workflow cannot apply
+`routing/approved` because that label is deliberately excluded from its
+safe-output allowlist.
+
 Use the weakest rubric dimension to propose one change to a workflow variable,
 such as:
 
@@ -132,6 +147,7 @@ such as:
 - The duplicate evidence threshold
 - The maximum number of related issues
 - The report length or structure
+- The suggested-team routing rule
 
 Write down the exact change and the behavior you expect it to improve. A second
 compile and run is an optional extension after the workshop; it is not required
@@ -161,6 +177,9 @@ a testable design rather than a broad autonomous system.
 - The agent analyzes with read-only permissions.
 - Repository writes occur only through declared safe outputs.
 - Every allowed label must already exist in the repository.
+- Simulated team tags must remain inside inline code and must not create real
+  mentions.
+- Only a human reviewer may apply `routing/approved`.
 - Prefer an unset classification over an unsupported guess.
 - The Copilot engine uses `model: auto` with explicit per-run, per-day, turn,
   and timeout limits.

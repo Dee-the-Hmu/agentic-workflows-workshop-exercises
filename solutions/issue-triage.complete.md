@@ -45,7 +45,10 @@ safe-outputs:
       - duplicate
       - invalid
       - spam
-    max: 3
+      - suggested-team/workflows
+      - suggested-team/developer-experience
+      - suggested-team/support-triage
+    max: 4
   add-comment:
     max: 1
 
@@ -86,8 +89,8 @@ If the issue is clearly spam, gibberish, or a test submission, apply `spam` or
 ## 3. Classify and prioritize
 
 Choose only labels that already exist and are directly supported by evidence.
-Apply at most one type label and one priority label, plus `needs-info` or
-`duplicate` when appropriate.
+Apply at most one type label, one priority label, one status label such as
+`needs-info` or `duplicate`, and one suggested-team label.
 
 - `priority/p0`: Active security incident, severe data loss, or broad outage.
 - `priority/p1`: Major regression or blocker with no reasonable workaround.
@@ -95,6 +98,19 @@ Apply at most one type label and one priority label, plus `needs-info` or
 
 Labels can trigger other automation. Prefer leaving priority unset over applying
 one speculatively.
+
+Recommend routing using at most one label:
+
+- `suggested-team/workflows`: Agentic Workflows, GitHub Actions workflow
+  definitions, workflow compilation, schema validation, and automation logic.
+- `suggested-team/developer-experience`: GitHub CLI, authentication, Codespaces,
+  local developer tooling, and developer environment problems.
+- `suggested-team/support-triage`: incomplete intake, general usage questions,
+  or reports that cannot yet be routed to a product team.
+
+Prefer leaving the team unset over an unsupported product-team guess. An
+incomplete issue may route to support triage when focused clarification is the
+appropriate next action.
 
 ## 4. Find duplicates and related issues
 
@@ -106,11 +122,26 @@ one speculatively.
 Include no more than two useful matches. Never classify an issue as a
 duplicate based only on similar title words.
 
-## 5. Assess next steps
+## 5. Recommend routing
+
+For a supported team recommendation, include the matching simulated tag:
+
+- `suggested-team/workflows` → `@example/workflows`
+- `suggested-team/developer-experience` → `@example/developer-experience`
+- `suggested-team/support-triage` → `@example/support-triage`
+
+Keep the simulated tag in inline code so it cannot create a real mention or
+notification.
+
+The agent must never apply `routing/approved`. Set approval status to **Pending
+maintainer review**. A human maintainer may apply `routing/approved` after
+confirming or correcting the route.
+
+## 6. Assess next steps
 
 Suggest one focused next step when the evidence supports it.
 
-## 6. Report
+## 7. Report
 
 Post one concise comment:
 
@@ -123,6 +154,9 @@ Post one concise comment:
 |---|---|---|
 | Type | [type or unset] | [brief evidence] |
 | Priority | [priority or unset] | [brief evidence] |
+| Suggested team | [`suggested-team/*` or unset] | [brief evidence] |
+| Simulated tag | [`@example/team-name` or unset] | No real mention is created |
+| Approval | Pending maintainer review | Human confirms or changes the route |
 
 ### Similar issues
 - #[number] — [duplicate or related, with a brief reason]
@@ -133,5 +167,5 @@ Post one concise comment:
 
 Omit "Similar issues" when there are no useful matches. Include no more than two
 matches. For an incomplete issue, replace the table with concise clarifying
-questions. Keep the report under 250 words, factual, respectful, and easy to
-scan.
+questions, but retain the supported routing and approval status. Keep the report
+under 300 words, factual, respectful, and easy to scan.

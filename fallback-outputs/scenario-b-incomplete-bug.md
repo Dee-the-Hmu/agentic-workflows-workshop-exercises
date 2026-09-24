@@ -4,6 +4,7 @@
 
 - Add label: `bug`
 - Add label: `needs-info`
+- Add label: `suggested-team/support-triage`
 - Add one triage comment
 - Leave priority unset
 
@@ -18,6 +19,9 @@ describe the failing behavior or provide enough evidence to reproduce it.
 
 - **Type:** Possible bug; the report is not yet verifiable.
 - **Priority:** Unset because impact and scope are not documented.
+- **Suggested team:** `suggested-team/support-triage`
+- **Simulated tag:** `@example/support-triage`
+- **Approval:** Pending maintainer review
 
 ### Information needed
 
@@ -36,3 +40,4 @@ investigated without guessing.
 - Restraint is the primary success criterion.
 - Urgent wording alone does not justify a priority label.
 - Focused questions are more useful than a speculative diagnosis.
+- Support triage is appropriate until enough evidence exists for product-team routing.

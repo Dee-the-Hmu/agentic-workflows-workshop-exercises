@@ -4,6 +4,7 @@
 
 - Add label: `bug`
 - Add label: `duplicate`
+- Add label: `suggested-team/developer-experience`
 - Add one triage comment
 - Leave priority unset
 
@@ -20,6 +21,9 @@ seeded issue titled "CLI login loops after the browser authorization succeeds."
 - **Type:** Bug.
 - **Priority:** Unset because neither issue establishes impact beyond the
   affected authentication flow.
+- **Suggested team:** `suggested-team/developer-experience`
+- **Simulated tag:** `@example/developer-experience`
+- **Approval:** Pending maintainer review
 
 ### Similar issue
 
@@ -39,3 +43,5 @@ investigation on the earlier issue.
 - The comment should identify the actual issue number in a live repository.
 - If the agent cannot establish the match, mentioning the issue as related is
   preferable to applying `duplicate`.
+- A human reviewer should approve or redirect the suggested team before any
+  assignment or downstream action.

@@ -4,6 +4,7 @@
 
 - Add label: `bug`
 - Add label: `priority/p1`
+- Add label: `suggested-team/workflows`
 - Add one triage comment
 
 ## Representative maintainer comment
@@ -19,6 +20,9 @@ environment, and the compiler error.
 - **Type:** Bug. Compilation of a previously valid issue trigger now fails.
 - **Priority:** `priority/p1`. The compiler is blocked for the reported workflow,
   but the issue does not establish a broad service outage or data-loss risk.
+- **Suggested team:** `suggested-team/workflows`
+- **Simulated tag:** `@example/workflows`
+- **Approval:** Pending maintainer review
 
 ### Similar issues
 
@@ -34,5 +38,6 @@ the issue trigger schema or migration handling changed.
 - The classification cites details present in the issue.
 - The priority avoids escalating the issue to p0 without outage evidence.
 - The next step is specific enough for an engineer to begin investigation.
+- The simulated team tag is visible but creates no real mention or notification.
 - A live result may choose to leave priority unset; evaluate its reasoning
   rather than expecting this exact wording.

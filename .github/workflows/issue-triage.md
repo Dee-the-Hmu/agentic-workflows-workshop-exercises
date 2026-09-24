@@ -39,8 +39,10 @@ safe-outputs:
       - feature
       - question
       # TODO 1: Add the labels needed for incomplete issues, duplicates,
-      # invalid submissions, spam, and priorities p0 through p2.
-    max: 3
+      # invalid submissions, spam, priorities p0 through p2, and the three
+      # suggested-team routing options.
+      # Do not allow `routing/approved`; only a human reviewer may apply it.
+    max: 4
   add-comment:
     max: 1
 
@@ -75,12 +77,16 @@ If the issue is clearly spam, gibberish, or a test submission, apply `spam` or
 ## 3. Classify and prioritize
 
 Choose only labels that already exist and are directly supported by evidence.
-Apply at most one type label and one priority label, plus `needs-info` or
-`duplicate` when appropriate.
+Apply at most one type label, one priority label, one status label such as
+`needs-info` or `duplicate`, and one suggested-team label.
 
 <!-- TODO 2B:
 Define priority/p0, priority/p1, and priority/p2 for this repository.
 Include a rule that prefers leaving priority unset over guessing.
+Define when to recommend each suggested-team label:
+- suggested-team/workflows
+- suggested-team/developer-experience
+- suggested-team/support-triage
 -->
 
 ## 4. Find duplicates and related issues
@@ -93,19 +99,31 @@ Include a rule that prefers leaving priority unset over guessing.
 Include no more than two useful matches. Never classify an issue as a
 duplicate based only on similar title words.
 
-## 5. Assess next steps
+## 5. Recommend routing
+
+Recommend at most one suggested team when the evidence supports it. Never create
+a real GitHub mention. Represent the simulated team tag in inline code, such as
+`@example/workflows`.
+
+The agent must never apply `routing/approved`. That label represents a human
+maintainer's approval after reviewing the evidence and proposed route.
+
+## 6. Assess next steps
 
 Suggest one focused next step when the evidence supports it.
 
-## 6. Report
+## 7. Report
 
 <!-- TODO 3:
 Define a concise maintainer-facing report containing:
 - a 1–2 sentence summary
 - type and priority with brief evidence
+- a suggested-team label and simulated inline-code team tag
+- approval status set to "Pending maintainer review"
 - up to two similar issues when useful
 - one focused next step
 
 For an incomplete issue, replace speculative classification with focused
-clarifying questions. Keep the entire comment under 250 words.
+clarifying questions while retaining the routing recommendation and approval
+status when supported. Keep the entire comment under 300 words.
 -->

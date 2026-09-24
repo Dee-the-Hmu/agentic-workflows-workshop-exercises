@@ -12,6 +12,10 @@ labels=(
   "priority/p0|b60205|Critical incident, severe data loss, or broad outage"
   "priority/p1|d93f0b|Major regression or blocker without a workaround"
   "priority/p2|fbca04|Normal actionable work"
+  "suggested-team/workflows|1f6feb|Suggested route: workflows and automation team"
+  "suggested-team/developer-experience|8250df|Suggested route: developer experience team"
+  "suggested-team/support-triage|bf8700|Suggested route: support triage team"
+  "routing/approved|0e8a16|Human reviewer approved the suggested route"
   "workshop-fixture|6e7781|Workshop test fixture; agent execution is skipped"
 )
 
