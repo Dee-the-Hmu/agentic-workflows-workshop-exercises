@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$root/scripts/ensure-user-gh-auth.sh"
+
 labels=(
   "bug|d73a4a|Something is not working"
   "feature|a2eeef|New functionality or request"

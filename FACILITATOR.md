@@ -16,25 +16,34 @@
 
 1. Follow `PUBLISHING.md` with a separate personal GitHub.com account.
 2. Create a repository from the template and launch a new Codespace.
-3. Run `./scripts/workshop-readiness.sh`.
-4. Confirm the workflow uses `model: auto`.
-5. Confirm the fixture issue is skipped and scenario A proceeds past
+3. Authenticate GitHub CLI as the intended user:
+
+   ```shell
+   unset GH_TOKEN GITHUB_TOKEN
+   gh auth login --hostname github.com --git-protocol https \
+     --web --scopes repo,workflow,read:org
+   gh auth status --active --hostname github.com
+   ```
+
+4. Run `./scripts/workshop-readiness.sh`.
+5. Confirm the workflow uses `model: auto`.
+6. Confirm the fixture issue is skipped and scenario A proceeds past
    pre-activation. The root-level `if:` checks the triggering issue's labels;
    `skip-if-match` must not be used because it searches the repository.
-6. Confirm `on.roles: all`, the `WORKSHOP_OPERATOR` variable, and the operator
+7. Confirm `on.roles: all`, the `WORKSHOP_OPERATOR` variable, and the operator
    condition are present. Test personal and organization-owned copies. In a
    public rehearsal copy, verify that an unconfigured user cannot start
    inference.
-7. Run all scenarios and inspect AI Credits with `gh aw logs` and `gh aw audit`.
-8. Adjust `max-ai-credits` only if a successful rehearsal approaches the cap.
-9. Reset `.github/workflows/issue-triage.md` to the TODO version.
-10. Recompile so the committed lock file matches the starter.
-11. Test each script mode in a disposable repository:
+8. Run all scenarios and inspect AI Credits with `gh aw logs` and `gh aw audit`.
+9. Adjust `max-ai-credits` only if a successful rehearsal approaches the cap.
+10. Reset `.github/workflows/issue-triage.md` to the TODO version.
+11. Recompile so the committed lock file matches the starter.
+12. Test each script mode in a disposable repository:
    - `./scripts/create-test-issues.sh --seed-duplicate-source`
    - `./scripts/create-test-issues.sh A`
    - `./scripts/create-test-issues.sh B`
    - `./scripts/create-test-issues.sh C`
-12. Run `gh aw secrets bootstrap --non-interactive --engine copilot` and confirm
+13. Run `gh aw secrets bootstrap --non-interactive --engine copilot` and confirm
    the participant authentication path is ready.
 
 ## 120-minute run of show
@@ -91,6 +100,9 @@ After evaluation, ask the repository operator to act as the human approver:
 
 If authentication or installation fails:
 
+- Confirm the intended account is active with
+  `gh auth status --active --hostname github.com`; if Codespaces environment
+  authentication is taking precedence, rerun the login commands above.
 - Pair the attendee with a working environment.
 - Use the facilitator repository and ask the attendee to evaluate an output.
 - If most of the room is blocked, demonstrate one live run from the facilitator

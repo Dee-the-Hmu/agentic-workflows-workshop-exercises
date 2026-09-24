@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$root/scripts/ensure-user-gh-auth.sh"
+
 required_secret="COPILOT_GITHUB_TOKEN"
 
 echo "Checking GitHub authentication..."
-gh auth status
+gh auth status --active --hostname github.com
 
 repo="$(gh repo view --json nameWithOwner --jq .nameWithOwner)"
 owner_type="$(gh api "repos/$repo" --jq .owner.type)"
@@ -47,11 +50,11 @@ gh aw secrets bootstrap --non-interactive --engine copilot
 
 echo
 echo "Creating workshop labels..."
-./scripts/create-labels.sh
+"$root/scripts/create-labels.sh"
 
 echo
 echo "Seeding the duplicate fixture without starting the AI agent..."
-./scripts/create-test-issues.sh --seed-duplicate-source
+"$root/scripts/create-test-issues.sh" --seed-duplicate-source
 
 echo
 echo "Compiling the starter workflow..."

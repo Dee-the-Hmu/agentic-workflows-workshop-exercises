@@ -33,6 +33,31 @@ participant who has compatible access.
 3. Open **Code → Codespaces → Create codespace on main**.
 4. Wait for the terminal to report that the Codespace tools are installed.
 
+## Authenticate GitHub CLI as your user
+
+Codespaces provides a `GITHUB_TOKEN` environment variable. GitHub CLI gives
+that environment token precedence over stored user authentication, but the
+workshop scripts administer repository variables, labels, issues, secrets, and
+workflows as the signed-in user.
+
+Run:
+
+```shell
+unset GH_TOKEN GITHUB_TOKEN
+gh auth login --hostname github.com --git-protocol https \
+  --web --scopes repo,workflow,read:org
+gh auth status --active --hostname github.com
+```
+
+Confirm the intended GitHub account is active and that the status does not
+report authentication from an environment token. The workshop scripts ignore
+Codespaces' `GITHUB_TOKEN` so stored GitHub CLI user authentication can be used.
+An intentionally supplied `GH_TOKEN` remains supported.
+
+`COPILOT_GITHUB_TOKEN` is separate: it remains a repository Actions secret used
+by the Agentic Workflow for Copilot inference, not GitHub CLI authentication in
+the Codespace.
+
 ## Configure Copilot inference
 
 Create a fine-grained token owned by your personal account:
@@ -71,7 +96,8 @@ organization seat.
 ./scripts/workshop-readiness.sh
 ```
 
-- [ ] GitHub CLI authentication succeeds.
+- [ ] The intended GitHub account is active in GitHub CLI without
+  environment-token authentication.
 - [ ] gh-aw version 0.88.8 is installed.
 - [ ] The Copilot repository secret is detected.
 - [ ] `WORKSHOP_OPERATOR` is set to my signed-in GitHub username.

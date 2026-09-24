@@ -2,6 +2,7 @@
 set -euo pipefail
 
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$root/scripts/ensure-user-gh-auth.sh"
 
 create_issue() {
   local file="$1"

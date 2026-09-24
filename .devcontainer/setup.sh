@@ -11,4 +11,11 @@ gh aw --version
 copilot --version
 echo
 echo "Codespace tools are installed."
+echo "Authenticate GitHub CLI as your user before running readiness:"
+cat <<'EOF'
+unset GH_TOKEN GITHUB_TOKEN
+gh auth login --hostname github.com --git-protocol https \
+  --web --scopes repo,workflow,read:org
+EOF
+echo
 echo "Complete PREWORK.md, then run ./scripts/workshop-readiness.sh."

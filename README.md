@@ -26,8 +26,16 @@ By the end of the exercise, you will:
    or an organization where you can administer Actions secrets and variables.
 3. In your new repository, select **Code → Codespaces → Create codespace on
    main**.
-4. Complete [PREWORK.md](PREWORK.md).
-5. Run:
+4. Authenticate GitHub CLI as your user:
+
+   ```shell
+   unset GH_TOKEN GITHUB_TOKEN
+   gh auth login --hostname github.com --git-protocol https \
+     --web --scopes repo,workflow,read:org
+   ```
+
+5. Complete [PREWORK.md](PREWORK.md).
+6. Run:
 
    ```shell
    ./scripts/workshop-readiness.sh
@@ -62,6 +70,7 @@ Codespace and have that operator create the assigned issue.
 | `fallback-outputs/` | Sample results for continuing when Actions or inference is delayed |
 | `docs/evaluation-rubric.md` | Rubric for reviewing workflow output |
 | `docs/workflow-design-canvas.md` | Worksheet for designing another SDLC workflow |
+| `scripts/ensure-user-gh-auth.sh` | Ensures workshop scripts use GitHub CLI user authentication |
 | `scripts/create-labels.sh` | Creates the labels allowed by the workflow |
 | `scripts/create-test-issues.sh` | Creates only the assigned test scenario |
 | `scripts/workshop-readiness.sh` | Verifies auth, secret, labels, fixture, and compilation |
